@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script{
                     try {
-                            sh "createdb var_db"
+                            sh "createdb resize"
                         }
                          catch (exc) {
                             echo 'is already exist'
@@ -22,7 +22,7 @@ pipeline {
                         try {
                             sh "cd ${workspace}/client && yarn install"
                             sh "cd ${workspace}/client && yarn run build-test"
-                            sh "curl 'http://localhost:var_test_port/actuator/shutdown' -i -X POST"
+                            sh "curl 'http://localhost:3334/actuator/shutdown' -i -X POST"
                         }
                          catch (exc) {
                             echo 'Something failed!'
@@ -52,7 +52,7 @@ pipeline {
             steps {
             script{
                         try {
-                            sh "curl 'http://localhost:var_port/actuator/shutdown' -i -X POST"
+                            sh "curl 'http://localhost:9999/actuator/shutdown' -i -X POST"
                         }
                          catch (exc) {
                             echo 'Something failed!'
