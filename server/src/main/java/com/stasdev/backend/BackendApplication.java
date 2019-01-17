@@ -26,7 +26,7 @@ public class BackendApplication {
 	 * Так правильнее создавать "преднастройки"
 	 * */
 	@Component
-	@Profile("firstStart")
+	@Profile(value = {"firstStart"})
 	class UserCommandLineRunner implements CommandLineRunner {
 
 		@Autowired
