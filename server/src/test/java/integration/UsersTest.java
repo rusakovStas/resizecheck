@@ -33,7 +33,7 @@ public class UsersTest extends CommonUITest {
     @Test
     void adminCanCreateAndDeleteUser() {
         $(byText("Admin")).click();
-        $(byText("Add User")).click();
+        $(byText("Add User")).shouldBe(enabled).click();
         $("#username").sendKeys("Check creating user");
         $("#password").sendKeys("pass");
         $(byText("Add")).click();
