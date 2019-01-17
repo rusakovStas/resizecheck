@@ -15,13 +15,10 @@ import TopNavigationBar from "./TopNavigationBar";
 class MobileContainer extends React.Component {
   state = {};
 
-  handleSidebarHide = () => {
-    console.log("event");
-    console.log(this.state.sidebarOpened);
+  handleSidebarHide = () =>
     this.state.sidebarOpened === true
       ? this.setState({ sidebarOpened: false })
       : this.setState({ sidebarOpened: true });
-  };
 
   handleToggle = () => this.setState({ sidebarOpened: true });
 
@@ -32,7 +29,7 @@ class MobileContainer extends React.Component {
       <Segment textAlign="center" vertical>
         <Container>
           <Menu secondary size="large">
-            <Menu.Item onClick={this.handleToggle}>
+            <Menu.Item onClick={this.handleSidebarHide}>
               <Icon name="sidebar" />
             </Menu.Item>
             <Menu.Item
@@ -52,13 +49,13 @@ class MobileContainer extends React.Component {
         <Sidebar
           as={Menu}
           animation="push"
-          // onHide={this.handleSidebarHide}
           vertical
           visible={sidebarOpened}
+          onClick={this.handleSidebarHide}
         >
           <TopNavigationBar />
         </Sidebar>
-        <Sidebar.Pusher dimmed={sidebarOpened} onClick={this.handleSidebarHide}>
+        <Sidebar.Pusher dimmed={sidebarOpened}>
           {this.props.isAuthentifacated && <MobileMenu />}
           <Container>{children}</Container>
         </Sidebar.Pusher>
