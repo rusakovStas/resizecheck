@@ -7,8 +7,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Icon,
-  Ref
+  Icon
 } from "semantic-ui-react";
 import * as actions from "../../actions/auth";
 import TopNavigationBar from "./TopNavigationBar";
@@ -16,7 +15,10 @@ import TopNavigationBar from "./TopNavigationBar";
 class MobileContainer extends React.Component {
   state = {};
 
-  handleSidebarHide = () => this.setState({ sidebarOpened: false });
+  handleSidebarHide = () =>
+    this.state.sidebarOpened === true
+      ? this.setState({ sidebarOpened: false })
+      : this.setState({ sidebarOpened: true });
 
   handleToggle = () => this.setState({ sidebarOpened: true });
 
