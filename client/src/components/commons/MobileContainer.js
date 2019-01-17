@@ -16,7 +16,10 @@ import TopNavigationBar from "./TopNavigationBar";
 class MobileContainer extends React.Component {
   state = {};
 
-  handleSidebarHide = () => this.setState({ sidebarOpened: false });
+  handleSidebarHide = () => {
+    this.setState({ sidebarOpened: false });
+    console.log("event hide");
+  };
 
   handleToggle = () => this.setState({ sidebarOpened: true });
 
@@ -47,7 +50,10 @@ class MobileContainer extends React.Component {
         <Sidebar
           as={Menu}
           animation="push"
-          onHide={this.handleSidebarHide}
+          onHide={() => {
+            this.handleSidebarHide();
+            console.log("hide");
+          }}
           vertical
           visible={sidebarOpened}
         >
